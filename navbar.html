@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Navbar</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Separate CSS file -->
+  <link rel="stylesheet" href="navbar.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar__container">
+
+      <!-- Logo -->
+      <a href="#" class="navbar__logo">
+        <span class="navbar__logo-mark">&lt;/&gt;</span>
+        DevDip
+      </a>
+
+      <!-- Hamburger toggle (pure CSS, no JS) -->
+      <input type="checkbox" id="nav-toggle" class="navbar__toggle-checkbox">
+      <label for="nav-toggle" class="navbar__toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- Nav links -->
+      <ul class="navbar__menu">
+        <li><a href="#" class="navbar__link navbar__link--active">Home</a></li>
+        <li><a href="#" class="navbar__link">About</a></li>
+        <li><a href="#" class="navbar__link">Projects</a></li>
+        <li><a href="#" class="navbar__link">Blog</a></li>
+        <li><a href="#" class="navbar__link">Contact</a></li>
+        <li><a href="#" class="navbar__cta">Hire Me</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <!-- Demo page content, just to show navbar in context -->
+  <main class="demo-content">
+    <h1>Navbar Demo</h1>
+    <p>Resize the browser window to see the mobile menu (pure HTML + CSS, no JavaScript).</p>
+  </main>
+
+</body>
+</html>

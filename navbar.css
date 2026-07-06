@@ -1,0 +1,219 @@
+/* ===== Design tokens ===== */
+:root {
+  --color-bg: #0f1420;
+  --color-surface: #141a2a;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-text: #e8eaf0;
+  --color-text-muted: #9aa3b8;
+  --color-accent: #6d5efc;
+  --color-accent-hover: #8577ff;
+  --font-display: "Sora", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --navbar-height: 72px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* ===== Navbar shell ===== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--navbar-height);
+  background: rgba(20, 26, 42, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navbar__container {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ===== Logo ===== */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-text);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.navbar__logo-mark {
+  color: var(--color-accent);
+  font-family: monospace;
+}
+
+/* ===== Menu ===== */
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.navbar__link {
+  position: relative;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 8px 0;
+  transition: color 0.2s ease;
+}
+
+.navbar__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-accent);
+  transition: width 0.25s ease;
+}
+
+.navbar__link:hover {
+  color: var(--color-text);
+}
+
+.navbar__link:hover::after {
+  width: 100%;
+}
+
+.navbar__link--active {
+  color: var(--color-text);
+}
+
+.navbar__link--active::after {
+  width: 100%;
+}
+
+/* ===== CTA button ===== */
+.navbar__cta {
+  background: var(--color-accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.navbar__cta:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+/* ===== Mobile toggle (checkbox hack, no JS) ===== */
+.navbar__toggle-checkbox {
+  display: none;
+}
+
+.navbar__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 110;
+}
+
+.navbar__toggle span {
+  width: 26px;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* ===== Demo content (not part of navbar, just for preview) ===== */
+.demo-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+.demo-content h1 {
+  font-family: var(--font-display);
+  margin-bottom: 12px;
+}
+
+.demo-content p {
+  color: var(--color-text-muted);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .navbar__toggle {
+    display: flex;
+  }
+
+  .navbar__menu {
+    position: fixed;
+    top: var(--navbar-height);
+    right: 0;
+    height: calc(100vh - var(--navbar-height));
+    width: min(75vw, 300px);
+    background: var(--color-surface);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 24px;
+    border-left: 1px solid var(--color-border);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .navbar__menu li {
+    width: 100%;
+  }
+
+  .navbar__link,
+  .navbar__cta {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+  }
+
+  .navbar__cta {
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  /* Toggle checkbox controls menu + icon */
+  .navbar__toggle-checkbox:checked ~ .navbar__menu {
+    transform: translateX(0);
+  }
+
+  .navbar__toggle-checkbox:checked ~ .navbar__toggle span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .navbar__toggle-checkbox:checked ~ .navbar__toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar__toggle-checkbox:checked ~ .navbar__toggle span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
